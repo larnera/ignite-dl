@@ -1,0 +1,26 @@
+{
+  "name": "ignite-dl",
+  "version": "0.0.2",
+  "description": "Download Engage slides and videos for offline use",
+  "main": "dist/lib/ignite.js",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "cli-spinner": "^0.2.5",
+    "path": "^0.12.7",
+    "request": "^2.78.0",
+    "requestretry": "^1.12.0",
+    "sanitize-filename": "^1.6.1",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.17.31",
+    "@types/node": "^6.0.46",
+    "@types/request": "latest",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.0.1",
+    "typescript": "^2.0.3",
+    "typings": "^1.5.0"
+  },
+  "author": "Adam Larner",
+  "license": "AGPL-3.0+"
+}
