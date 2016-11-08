@@ -17,6 +17,7 @@ npm install ignite-dl
 Download all slidedecks by passing in the RSS addresses:
 
 ```js
+"use strict";
 let ignite_dl = require("ignite-dl");
 
 let ig = new ignite_dl.ignite({
@@ -30,6 +31,7 @@ let ig = new ignite_dl.ignite({
 Download all videos by passing in the RSS addresses:
 
 ```js
+"use strict";
 let ignite_dl = require("ignite-dl");
 
 let ig = new ignite_dl.ignite({
@@ -43,6 +45,7 @@ let ig = new ignite_dl.ignite({
 If you are behind a corporate proxy, you can include your proxy credentials:
 
 ```js
+"use strict";
 let ignite_dl = require("ignite-dl");
 
 let ig = new ignite_dl.ignite({
@@ -58,7 +61,6 @@ let ig = new ignite_dl.ignite({
     })
 
      ig.download('slides');
-
 ```
 
 
