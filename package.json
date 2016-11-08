@@ -1,8 +1,11 @@
 {
   "name": "ignite-dl",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Download Engage slides and videos for offline use",
   "main": "./node_modules/ignite-dl/dist/lib/ignite.js",
+  "repository": { 
+    "url": "https://github.com/larnera/ignite-dl" 
+  }, 
   "dependencies": {
     "cheerio": "^0.22.0",
     "cli-spinner": "^0.2.5",
