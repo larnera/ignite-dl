@@ -60,6 +60,10 @@ var downloadManager = (function () {
         });
     };
     downloadManager.prototype.notifyManager = function (downloadQueue) {
+        // create download folder
+        if (!fs.existsSync('../downloads')) {
+            fs.mkdirSync('../downloads');
+        }
         this.startEngine(downloadQueue);
     };
     downloadManager.prototype.downloadItem = function (downloadType, downloadItem) {

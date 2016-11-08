@@ -2,7 +2,7 @@
   "name": "ignite-dl",
   "version": "0.0.2",
   "description": "Download Engage slides and videos for offline use",
-  "main": "dist/lib/ignite.js",
+  "main": "./node_modules/ignite-dl/dist/lib/ignite.js",
   "dependencies": {
     "cheerio": "^0.22.0",
     "cli-spinner": "^0.2.5",

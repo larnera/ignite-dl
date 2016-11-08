@@ -60,6 +60,10 @@ class downloadManager {
         });
     }
     notifyManager(downloadQueue) {
+        // create download folder
+        if (!fs.existsSync('../downloads')) {
+            fs.mkdirSync('../downloads');
+        }
         this.startEngine(downloadQueue);
     }
     downloadItem(downloadType, downloadItem) {
