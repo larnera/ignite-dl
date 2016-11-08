@@ -61,8 +61,8 @@ var downloadManager = (function () {
     };
     downloadManager.prototype.notifyManager = function (downloadQueue) {
         // create download folder
-        if (!fs.existsSync('../downloads')) {
-            fs.mkdirSync('../downloads');
+        if (!fs.existsSync('downloads')) {
+            fs.mkdirSync('downloads');
         }
         this.startEngine(downloadQueue);
     };
@@ -115,7 +115,7 @@ var downloadManager = (function () {
             _this.downloadsCompleted++;
             _this.engine();
         })
-            .pipe(fs.createWriteStream("../downloads/" + sanitize(downloadItem.title) + path.extname(downloadLink)));
+            .pipe(fs.createWriteStream("./downloads/" + sanitize(downloadItem.title) + path.extname(downloadLink)));
     };
     return downloadManager;
 }());

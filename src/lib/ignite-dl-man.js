@@ -61,8 +61,8 @@ class downloadManager {
     }
     notifyManager(downloadQueue) {
         // create download folder
-        if (!fs.existsSync('../downloads')) {
-            fs.mkdirSync('../downloads');
+        if (!fs.existsSync('downloads')) {
+            fs.mkdirSync('downloads');
         }
         this.startEngine(downloadQueue);
     }
@@ -115,7 +115,7 @@ class downloadManager {
             _this.downloadsCompleted++;
             _this.engine();
         })
-            .pipe(fs.createWriteStream(`../downloads/${sanitize(downloadItem.title)}${path.extname(downloadLink)}`));
+            .pipe(fs.createWriteStream(`./downloads/${sanitize(downloadItem.title)}${path.extname(downloadLink)}`));
     }
 }
 exports.downloadManager = downloadManager;

@@ -17,9 +17,9 @@ npm install ignite-dl
 Download all slidedecks by passing in the RSS addresses:
 
 ```js
-var ignite = require("ignite-dl");
+let ignite_dl = require("ignite-dl");
 
-let ig = new ignite({
+let ig = new ignite_dl.ignite({
     maxConcurrentDownloads: 8,
     slidesAddresses: ['http://s.ch9.ms/events/ignite/2016/rss/slides',
                       'http://s.ch9.ms/events/ignite/2016/rss/slides?page=2']
@@ -30,9 +30,9 @@ let ig = new ignite({
 Download all videos by passing in the RSS addresses:
 
 ```js
-var ignite = require("ignite-dl");
+let ignite_dl = require("ignite-dl");
 
-let ig = new ignite({
+let ig = new ignite_dl.ignite({
     maxConcurrentDownloads: 8,
       videosAddresses: ['http://s.ch9.ms/events/ignite/2016/rss/mp4high',
                         'http://s.ch9.ms/events/ignite/2016/rss/mp4high?page=2']
@@ -43,9 +43,9 @@ let ig = new ignite({
 If you are behind a corporate proxy, you can include your proxy credentials:
 
 ```js
-var ignite = require("ignite-dl");
+let ignite_dl = require("ignite-dl");
 
-let ig = new ignite({
+let ig = new ignite_dl.ignite({
     maxConcurrentDownloads: 8,
     slidesAddresses: ['http://s.ch9.ms/events/ignite/2016/rss/slides',
                       'http://s.ch9.ms/events/ignite/2016/rss/slides?page=2'],
