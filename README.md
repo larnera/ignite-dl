@@ -73,6 +73,10 @@ Build 2016 slides - http://s.ch9.ms/events/Build/2016/rss/slides
 
 Build 2016 videos - http://s.ch9.ms/events/Build/2016/rss/mp4high
 
+Visual Studio Redmond 2016 slides - http://s.ch9.ms/Events/Visual-Studio/Visual-Studio-Live-Redmond-2016/RSS/slides
+
+Visual Studio Redmond 2016 videos - http://s.ch9.ms/Events/Visual-Studio/Visual-Studio-Live-Redmond-2016/RSS/mp4high
+
 
 ## Useful links
 

@@ -55,17 +55,19 @@ export class ignite {
     }
 
     private getDownloads(downloadType: string, addresses: Array<string>) {
-        console.log('Fetching bulk download metadata');
+        console.log('Starting...');
 
         if (!addresses) { console.log(`No ${downloadType} addresses provided.`); return false; }
         let _this = this;
         let requestCount = 0;
         addresses.forEach(function (item, index) {
+            console.log(`Getting RSS data from ${item}`);
 
             let requestOptions: any = {
                 url: item,
                 maxAttempts: 5,
                 retryDelay: 5000,
+                "rejectUnauthorized": false
             }
 
             if (_this.getProxy() !== null) {
@@ -81,7 +83,16 @@ export class ignite {
                     xmlMode: true
                 })
                 var data = parseString(body, function (err, result) {
-                    let rssItem = result.rss.channel[0].item;
+
+                    let rssItem: any;
+
+                    if (result.rss) {
+                        rssItem = result.rss.channel[0].item;
+                    } else {
+                        console.log('Unable to read RSS Data');
+                        return false;
+                    }
+
                     (rssItem).forEach(function (item, index) {
                         let mediaContent: Array<Object>;
                         if (item['media:group']) {
@@ -101,7 +112,7 @@ export class ignite {
                     })
                     requestCount++;
                     if (addresses.length == requestCount) {
-                        console.log(_this.downloadQueue.length);
+                        console.log(`Retrieved ${_this.downloadQueue.length} items for download`);
                         _this.dl.notifyManager(_this.downloadQueue);
                     }
                 })

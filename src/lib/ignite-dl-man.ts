@@ -44,15 +44,19 @@ export class downloadManager {
 
             if (!_this.isRunning) {
                 if (_this.downloadsInProgress <= _this.maxConcurrentDownloads) {
-                    console.log('starting download');
                     _this.downloadItem(downloadItem.downloadType, downloadItem);
                     _this.downloadsInProgress++;
                 }
             }
 
+            if ((_this.downloadQueue.length - _this.downloadsCompleted - 1) < _this.maxConcurrentDownloads) {
+                console.log('waiting on last download to complete');
+                stop = true;
+            }
+
             // start next download
             if (_this.downloadsCompleted > 0) {
-                console.log(`${_this.downloadsCompleted} downloads completed`);
+                console.log(`${_this.downloadsCompleted - 1} downloads completed of ${_this.downloadQueue.length}`);
                 let dlIndex = _this.downloadsCompleted + _this.maxConcurrentDownloads;
                 let downloadQueueItem: any = _this.downloadQueue[dlIndex];
 
@@ -92,7 +96,7 @@ export class downloadManager {
             }
         } else {
             downloadLink = downloadItem.slidesLink;
-            console.log(downloadLink);
+            console.log(`Downloading item: ${downloadLink}`);
         }
 
         let _this = this;
@@ -125,7 +129,7 @@ export class downloadManager {
             })
             .on('response', function (response) {
                 if (response.statusCode == 200) {
-                    console.log(`Downloading ${downloadItem.title} (${path.basename(downloadLink) })`);
+                    console.log(`Download in progress: ${downloadItem.title} (${path.basename(downloadLink) })`);
                 }
             })
             .on('end', function () {

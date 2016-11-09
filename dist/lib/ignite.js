@@ -35,7 +35,7 @@ var ignite = (function () {
         return proxyAddress;
     };
     ignite.prototype.getDownloads = function (downloadType, addresses) {
-        console.log('Fetching bulk download metadata');
+        console.log('Starting...');
         if (!addresses) {
             console.log("No " + downloadType + " addresses provided.");
             return false;
@@ -43,10 +43,12 @@ var ignite = (function () {
         var _this = this;
         var requestCount = 0;
         addresses.forEach(function (item, index) {
+            console.log("Getting RSS data from " + item);
             var requestOptions = {
                 url: item,
                 maxAttempts: 5,
-                retryDelay: 5000
+                retryDelay: 5000,
+                "rejectUnauthorized": false
             };
             if (_this.getProxy() !== null) {
                 requestOptions.proxy = _this.getProxy();
@@ -60,7 +62,14 @@ var ignite = (function () {
                     xmlMode: true
                 });
                 var data = parseString(body, function (err, result) {
-                    var rssItem = result.rss.channel[0].item;
+                    var rssItem;
+                    if (result.rss) {
+                        rssItem = result.rss.channel[0].item;
+                    }
+                    else {
+                        console.log('Unable to read RSS Data');
+                        return false;
+                    }
                     (rssItem).forEach(function (item, index) {
                         var mediaContent;
                         if (item['media:group']) {
@@ -80,7 +89,7 @@ var ignite = (function () {
                     });
                     requestCount++;
                     if (addresses.length == requestCount) {
-                        console.log(_this.downloadQueue.length);
+                        console.log("Retrieved " + _this.downloadQueue.length + " items for download");
                         _this.dl.notifyManager(_this.downloadQueue);
                     }
                 });

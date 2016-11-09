@@ -36,14 +36,17 @@ var downloadManager = (function () {
             }
             if (!_this.isRunning) {
                 if (_this.downloadsInProgress <= _this.maxConcurrentDownloads) {
-                    console.log('starting download');
                     _this.downloadItem(downloadItem.downloadType, downloadItem);
                     _this.downloadsInProgress++;
                 }
             }
+            if ((_this.downloadQueue.length - _this.downloadsCompleted - 1) < _this.maxConcurrentDownloads) {
+                console.log('waiting on last download to complete');
+                stop = true;
+            }
             // start next download
             if (_this.downloadsCompleted > 0) {
-                console.log(_this.downloadsCompleted + " downloads completed");
+                console.log((_this.downloadsCompleted - 1) + " downloads completed of " + _this.downloadQueue.length);
                 var dlIndex = _this.downloadsCompleted + _this.maxConcurrentDownloads;
                 var downloadQueueItem = _this.downloadQueue[dlIndex];
                 // exit if no download item exist
@@ -77,7 +80,7 @@ var downloadManager = (function () {
         }
         else {
             downloadLink = downloadItem.slidesLink;
-            console.log(downloadLink);
+            console.log("Downloading item: " + downloadLink);
         }
         var _this = this;
         if (!downloadLink) {
@@ -105,7 +108,7 @@ var downloadManager = (function () {
         })
             .on('response', function (response) {
             if (response.statusCode == 200) {
-                console.log("Downloading " + downloadItem.title + " (" + path.basename(downloadLink) + ")");
+                console.log("Download in progress: " + downloadItem.title + " (" + path.basename(downloadLink) + ")");
             }
         })
             .on('end', function () {
