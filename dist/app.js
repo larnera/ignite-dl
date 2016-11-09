@@ -8,7 +8,7 @@ var ig = new ig_dl.ignite({
         password: process.argv[4],
         addressePort: process.argv[5]
     },
-    slidesAddresses: ['http://s.ch9.ms/Events/Visual-Studio/Visual-Studio-Live-Redmond-2016/RSS/slides', 'http://s.ch9.ms/events/Build/2016/rss/slides']
+    slidesAddresses: ['http://s.ch9.ms/Events/Visual-Studio/Visual-Studio-Live-Redmond-2016/RSS/slides']
 });
 ig.download('slides');
 /*

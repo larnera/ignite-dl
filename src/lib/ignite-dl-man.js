@@ -40,8 +40,8 @@ class downloadManager {
                     _this.downloadsInProgress++;
                 }
             }
+            // detect last running items for download
             if ((_this.downloadQueue.length - _this.downloadsCompleted - 1) < _this.maxConcurrentDownloads) {
-                console.log('waiting on last download to complete');
                 stop = true;
             }
             // start next download
