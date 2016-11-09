@@ -39,7 +39,7 @@ let ig = new ignite_dl.ignite({
       videosAddresses: ['http://s.ch9.ms/events/ignite/2016/rss/mp4high',
                         'http://s.ch9.ms/events/ignite/2016/rss/mp4high?page=2']
     })   
-    ig.download('slides');
+    ig.download('videos');
 ```
 
 If you are behind a corporate proxy, you can include your proxy credentials:
@@ -80,7 +80,7 @@ Visual Studio Redmond 2016 videos - http://s.ch9.ms/Events/Visual-Studio/Visual-
 
 ## Useful links
 
-This project is loosely based on on the Powershell script:
+This project is loosely based on the Powershell script:
 
 https://gallery.technet.microsoft.com/Ignite-2016-Slidedeck-and-296df316
 
