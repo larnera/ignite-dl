@@ -1,6 +1,6 @@
 {
   "name": "ignite-dl",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Download Engage slides and videos for offline use",
   "main": "./dist/lib/ignite.js",
   "repository": { 
